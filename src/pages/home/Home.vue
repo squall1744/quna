@@ -2,24 +2,25 @@
   <div>
     <home-header></home-header>
     <home-swiper></home-swiper>
-    <p>ddd</p>
+    <home-icons></home-icons>
   </div>
 
 </template>
 
 <script>
-import homeHeader from './components/Header'
-import homeSwiper from './components/Swiper'
+import homeHeader from "./components/Header";
+import homeSwiper from "./components/Swiper";
+import homeIcons from "./components/Icons";
 export default {
-  name: 'home',
+  name: "home",
   components: {
     homeHeader,
-    homeSwiper
+    homeSwiper,
+    homeIcons
   }
-}
+};
 </script>
 
 <style lang="stylus" scoped>
-
 </style>
 
