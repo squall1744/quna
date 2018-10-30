@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-  <swiper :options="swiperOption" :not-next-tick="notNextTick" ref="mySwiper">
+  <swiper :options="swiperOption" :not-next-tick="notNextTick" ref="mySwiper" v-if="showSwiper">
     <!-- slides -->
     <swiper-slide v-for="item in swiperList" :key="item.id">
       <img class="swiper-img" :src="item.imgUrl" alt="">
@@ -14,6 +14,9 @@
 <script>
 export default {
   name: "carrousel",
+  props: {
+    swiperList: Array
+  },
   data() {
     return {
       // NotNextTick is a component's own property, and if notNextTick is set to true, the component will not instantiate the swiper through NextTick, which means you can get the swiper object the first time (if you need to use the get swiper object to do what Things, then this property must be true)
@@ -28,38 +31,17 @@ export default {
         pagination: ".swiper-pagination",
         loop: true,
         paginationClickable: true,
-        mousewheelControl: true,
+        mousewheelControl: false,
         observeParents: true
         // if you need use plugins in the swiper, you can config in here like this
         // 如果自行设计了插件，那么插件的一些配置相关参数，也应该出现在这个对象中，如下debugger
-      },
-      swiperList: [
-        {
-          id: 0,
-          imgUrl: "http://img1.qunarzz.com/qs/1810/e6/4b890f982670ae02.jpg"
-        },
-        {
-          id: 1,
-          imgUrl: "http://img1.qunarzz.com/qs/1810/db/ab9e1204b6144902.jpg"
-        },
-        {
-          id: 2,
-          imgUrl: "http://img1.qunarzz.com/qs/1809/be/b9098e1abc8a1002.jpg"
-        },
-        {
-          id: 3,
-          imgUrl: "http://img1.qunarzz.com/qs/1809/64/62160a38d119c202.jpg"
-        },
-        {
-          id: 4,
-          imgUrl: "http://img1.qunarzz.com/qs/1810/45/ac3ff199b79c5902.jpg"
-        },
-        {
-          id: 5,
-          imgUrl: "http://img1.qunarzz.com/qs/1810/db/ab9e1204b6144902.jpg"
-        }
-      ]
+      }
     };
+  },
+  computed: {
+    showSwiper() {
+      return this.swiperList.length;
+    }
   }
 };
 </script>
@@ -73,7 +55,7 @@ export default {
   overflow: hidden;
   width: 100%;
   height: 0;
-  padding-bottom: 25%;
+  padding-bottom: 31.25%;
 
   .swiper-img {
     width: 100%;

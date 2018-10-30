@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="recommend-title">热销推荐</div>
+    <div class="recommend-title" v-if="showSwiper">热销推荐</div>
     <ul>
       <li class="item border-bottom" v-for="item in recommendList" :key="item.id">
         <img class="item-img" :src="item.imgUrl" alt="">
@@ -17,39 +17,13 @@
 <script>
 export default {
   name: "recommend",
-  data() {
-    return {
-      recommendList: [
-        {
-          id: 0,
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1507/36/ce3d2d6c9ab44d67ae68d940b8781829.water.jpg_200x200_0938a8f2.jpg",
-          title: "北京野生动物园",
-          desc: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        },
-        {
-          id: 1,
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1507/36/ce3d2d6c9ab44d67ae68d940b8781829.water.jpg_200x200_0938a8f2.jpg",
-          title: "北京野生动物园",
-          desc: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        },
-        {
-          id: 2,
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1507/36/ce3d2d6c9ab44d67ae68d940b8781829.water.jpg_200x200_0938a8f2.jpg",
-          title: "北京野生动物园",
-          desc: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        },
-        {
-          id: 3,
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1507/36/ce3d2d6c9ab44d67ae68d940b8781829.water.jpg_200x200_0938a8f2.jpg",
-          title: "北京野生动物园",
-          desc: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        }
-      ]
-    };
+  props: {
+    recommendList: Array
+  },
+  computed: {
+    showSwiper() {
+      return this.recommendList.length;
+    }
   }
 };
 </script>

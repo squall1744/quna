@@ -1,10 +1,10 @@
 <template>
   <div>
-    <home-header></home-header>
-    <home-swiper></home-swiper>
-    <home-icons></home-icons>
-    <home-recommend></home-recommend>
-    <home-weekend></home-weekend>
+    <home-header :city="city"></home-header>
+    <home-swiper :swiperList="swiperList"></home-swiper>
+    <home-icons :iconList="iconList"></home-icons>
+    <home-recommend :recommendList="recommendList"></home-recommend>
+    <home-weekend :weekendList="weekendList"></home-weekend>
   </div>
 
 </template>
@@ -15,6 +15,7 @@ import homeSwiper from "./components/Swiper";
 import homeIcons from "./components/Icons";
 import homeRecommend from "./components/Recommend";
 import homeWeekend from "./components/Weekend";
+import axios from "axios";
 export default {
   name: "home",
   components: {
@@ -23,6 +24,33 @@ export default {
     homeIcons,
     homeRecommend,
     homeWeekend
+  },
+  data() {
+    return {
+      city: "",
+      swiperList: [],
+      iconList: [],
+      recommendList: [],
+      weekendList: []
+    };
+  },
+  methods: {
+    getHomeInfo() {
+      axios.get("/mock/index.json").then(this.getHomeInfoSucc);
+    },
+    getHomeInfoSucc(res) {
+      res = res.data;
+      if (res.ret && res.data) {
+        this.city = res.data.city;
+        this.swiperList = res.data.swiperList;
+        this.iconList = res.data.iconList;
+        this.recommendList = res.data.recommendList;
+        this.weekendList = res.data.weekendList;
+      }
+    }
+  },
+  mounted() {
+    this.getHomeInfo();
   }
 };
 </script>
