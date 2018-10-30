@@ -1,13 +1,14 @@
 <template>
   <div>
-    <div class="recommend-title">热销推荐</div>
+    <div class="recommend-title">周末去哪儿</div>
     <ul>
       <li class="item border-bottom" v-for="item in recommendList" :key="item.id">
-        <img class="item-img" :src="item.imgUrl" alt="">
+        <div class="item-img-wrapper">
+          <img class="item-img" :src="item.imgUrl" alt="">
+        </div>
         <div class="item-info">
           <p class="item-title">{{ item.title }}</p>
           <p class="item-desc">{{ item.desc }}</p>
-          <div class="item-button">查看详情</div>
         </div>
       </li>
     </ul>
@@ -23,28 +24,28 @@ export default {
         {
           id: 0,
           imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1507/36/ce3d2d6c9ab44d67ae68d940b8781829.water.jpg_200x200_0938a8f2.jpg",
+            "http://img1.qunarzz.com/sight/source/1509/81/0412da9c4db66a.jpg_r_640x214_8e23871e.jpg",
           title: "北京野生动物园",
           desc: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         },
         {
           id: 1,
           imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1507/36/ce3d2d6c9ab44d67ae68d940b8781829.water.jpg_200x200_0938a8f2.jpg",
+            "http://img1.qunarzz.com/sight/source/1509/81/0412da9c4db66a.jpg_r_640x214_8e23871e.jpg",
           title: "北京野生动物园",
           desc: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         },
         {
           id: 2,
           imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1507/36/ce3d2d6c9ab44d67ae68d940b8781829.water.jpg_200x200_0938a8f2.jpg",
+            "http://img1.qunarzz.com/sight/source/1509/81/0412da9c4db66a.jpg_r_640x214_8e23871e.jpg",
           title: "北京野生动物园",
           desc: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         },
         {
           id: 3,
           imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1507/36/ce3d2d6c9ab44d67ae68d940b8781829.water.jpg_200x200_0938a8f2.jpg",
+            "http://img1.qunarzz.com/sight/source/1509/81/0412da9c4db66a.jpg_r_640x214_8e23871e.jpg",
           title: "北京野生动物园",
           desc: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         }
@@ -64,43 +65,29 @@ export default {
   text-indent: 0.2rem;
 }
 
-.item {
+.item-img-wrapper {
   overflow: hidden;
-  display: flex;
-  height: 1.9rem;
+  height: 0;
+  padding-bottom: 33.9%;
+}
 
-  .item-img {
-    width: 1.7rem;
-    height: 1.7rem;
-    padding: 0.1rem;
+.item-img {
+  width: 100%;
+}
+
+.item-info {
+  padding: 0.1rem;
+  min-width: 0;
+
+  .item-title {
+    line-height: 0.54rem;
+    font-size: 0.32rem;
   }
 
-  .item-info {
-    flex: 1;
-    padding: 0.1rem;
-    min-width: 0;
-
-    .item-title {
-      line-height: 0.54rem;
-      font-size: 0.32rem;
-    }
-
-    .item-desc {
-      ellipse();
-      line-height: 0.4rem;
-      color: #eee;
-    }
-
-    .item-button {
-      background: #ff9300;
-      width: 1.2rem;
-      padding: 0.1rem;
-      border-radius: 0.06rem;
-      line-height: 0.2rem;
-      margin-top: 0.16rem;
-      color: #fff;
-    }
+  .item-desc {
+    ellipse();
+    line-height: 0.4rem;
+    color: #eee;
   }
 }
 </style>
-
