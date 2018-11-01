@@ -52,6 +52,7 @@ dd,
 ol,
 ul,
 li,
+input,
 fieldset,
 form,
 label,
@@ -83,7 +84,8 @@ summary,
 time,
 mark,
 audio,
-video {
+video,
+* {
   margin: 0;
   padding: 0;
   border: 0;
