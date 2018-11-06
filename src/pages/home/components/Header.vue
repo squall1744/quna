@@ -5,17 +5,14 @@
     </div>
     <div class="header-input"><i class="iconfont">&#xe668;</i>输入城市/景点/游玩主题</div>
     <router-link to="/city">
-      <div class="header-right">{{city}}<i class="iconfont">&#xe6e9;</i></div>
+      <div class="header-right">{{this.$store.state.city}}<i class="iconfont">&#xe6e9;</i></div>
     </router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: "homeHeader",
-  props: {
-    city: String
-  }
+  name: "homeHeader"
 };
 </script>
 
