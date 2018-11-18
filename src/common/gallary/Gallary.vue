@@ -5,12 +5,13 @@
     :options="swiperOption" 
     :not-next-tick="notNextTick" 
     ref="mySwiper"
-    v-for="item in imgs"
-    :key="item"
     v-if="showGallary"
   >
     <!-- slides -->
-    <swiper-slide>
+    <swiper-slide
+      v-for="(item, index) in imgs"
+      :key="index"
+    >
       <img class="gallary-img" :src="item">
     </swiper-slide>
     <!-- Optional controls -->
@@ -33,8 +34,8 @@ export default {
       notNextTick: true,
       swiperOption: {
         // swiper options 所有的配置同swiper官方api配置
-        autoplay: false,
-        autoplayDisableOnInteraction: false,
+        // autoplay: 200,
+        // autoplayDisableOnInteraction: false,
         grabCursor: true,
         setWrapperSize: true,
         pagination: ".swiper-pagination",

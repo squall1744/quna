@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       imgs: [
+        "http://img1.qunarzz.com/sight/p0/1411/12/61b9be8c7bd5ff48a86add2eddd93517.water.jpg_r_800x800_dc03df8f.jpg",
         "http://img1.qunarzz.com/sight/p0/1411/12/61b9be8c7bd5ff48a86add2eddd93517.water.jpg_r_800x800_dc03df8f.jpg"
       ],
       showGallary: false
@@ -37,7 +38,6 @@ export default {
     },
     gallaryClose() {
       this.showGallary = false;
-      console.log("aa");
     }
   }
 };
