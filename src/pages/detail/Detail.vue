@@ -1,10 +1,16 @@
 <template>
 <div>
-  <detail-banner></detail-banner>
-  <detail-header></detail-header>  
-  <div class="content">
-    <detail-List :list="list"></detail-List>
-  </div>
+    <detail-banner
+      :sightName="sightName"
+      :bannerImg="bannerImg"
+      :gallaryImgs="gallaryImgs"
+    ></detail-banner>
+    <keep-alive>
+      <detail-header></detail-header>  
+    </keep-alive>
+    <div class="content">
+      <detail-List :list="categoryList"></detail-List>
+    </div>
 </div>
 </template>
 
@@ -12,6 +18,7 @@
 import detailBanner from "./components/Banner";
 import detailHeader from './components/Header'
 import detailList from './components/List'
+import axios from 'axios'
 export default {
   name: "detail",
   components: {
@@ -21,28 +28,32 @@ export default {
   },
   data() {
     return {
-      list: [{
-        title: '成人票',
-        children: [
-          {
-            title: '成人三馆联票'
-          },
-          {
-            title: '成人五馆联票'
-          }
-        ]
-      },
-      {
-        title: '学生票' 
-      },
-      {
-        title: '儿童票'
-      },
-      {
-        title: '特惠票'
-      }
-      ]
+      sightName: '',
+      bannerImg: '',
+      gallaryImgs: [],
+      categoryList: []
     }
+  },
+  methods: {
+    getDetailInfo() {
+      axios.get('/mock/detail.json', {
+        params: {
+          id: this.$route.params.id
+        }
+        }).then(res => this.getDetailInfoSucc(res))
+    },
+    getDetailInfoSucc(res) {
+      res = res.data
+      if(res.ret && res.data) {
+        this.sightName = res.data.sightName
+        this.bannerImg = res.data.bannerImg
+        this.gallaryImgs = res.data.gallaryImgs
+        this.categoryList = res.data.categoryList
+      }
+    }
+  },
+  created() {
+    this.getDetailInfo()
   }
 };
 </script>

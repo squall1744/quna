@@ -34,7 +34,7 @@ export default {
       notNextTick: true,
       swiperOption: {
         // swiper options 所有的配置同swiper官方api配置
-        // autoplay: 200,
+        // autoplay: 2000,
         // autoplayDisableOnInteraction: false,
         grabCursor: true,
         setWrapperSize: true,

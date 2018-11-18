@@ -5,7 +5,7 @@
       v-for="item in letters"
       :key="item"
       :ref="item"
-      @touchstart="handleTouchstart"
+      @touchstart.prevent="handleTouchstart"
       @touchmove="handleTouchmove"
       @touchend="handleTouchend"
       @click="$emit('change', item)"
